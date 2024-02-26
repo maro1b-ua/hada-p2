@@ -7,7 +7,7 @@
     <ProjectGuid>{77D8AC2E-2193-4B65-80B6-8D8BA3388829}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>hada_p2</RootNamespace>
-    <AssemblyName>hada_p2</AssemblyName>
+    <AssemblyName>hada-p2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coordenada.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
