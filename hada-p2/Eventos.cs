@@ -8,5 +8,21 @@ namespace Hada
 {
     class Eventos
     {
+        public class TocadoArgs : EventArgs
+        {
+            public TocadoArgs(String nombre, Coordenada c, String etiqueta)
+            {
+
+            }
+        }
+
+        public class HundidoArgs : EventArgs
+        {
+            public HundidoArgs(String nombre)
+            {
+
+            }
+
+        }
     }
 }
