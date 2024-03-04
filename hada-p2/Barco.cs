@@ -63,7 +63,7 @@ namespace Hada
             Dictionary<Coordenada, string>.KeyCollection coordenadaDisparo = this.CoordenadasBarco.Keys;
             foreach (Coordenada coord in coordenadaDisparo)
             {
-                if (c == coord)
+                if (c == coord && _CoordenadasBarco[coord]==this._Nombre)
                 {
                     string situacion = _CoordenadasBarco[coord];
                     this._CoordenadasBarco[coord] = situacion + "_T";
@@ -94,5 +94,10 @@ namespace Hada
 
         public event EventHandler<TocadoArgs> eventoTocado;
         public event EventHandler<HundidoArgs> eventoHundido;
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }
