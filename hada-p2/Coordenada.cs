@@ -82,12 +82,17 @@ namespace Hada
         override
         public bool Equals(Object o)
         {
-            if(o == null )
+            Coordenada c = (Coordenada) o;
+
+            if (_Fila == c.Fila && _Columna == c.Columna)
             {
+                return true;
+            }
+            else {
                 return false;
             }
 
-            return true;
+            
         }
 
         public bool Equals(Coordenada coord)
