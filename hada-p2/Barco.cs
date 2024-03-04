@@ -97,7 +97,26 @@ namespace Hada
 
         public override string ToString()
         {
-            return base.ToString();
+            String s= new string();
+            s= "["+ _Nombre + "] - DAÑOS: [" + _NumDanyos + "] - HUNDIDO: [";
+            if (this.hundido())
+            {
+                s += "True]";
+            }
+            else
+            {
+                s+="False]"
+            }
+            s+= " - COORDENADAS: ";
+
+            foreach(KeyValuePair<Coordenada, String> k in _CoordenadasBarco)
+            {
+                s+="["+ k.Key + " :"+ k.Value + "] ";
+            }
+
+            return s.ToString();
         }
+
+
     }
 }
