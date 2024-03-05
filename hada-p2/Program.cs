@@ -10,6 +10,10 @@ namespace Hada
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Bienvenido al juego de  Hada");
+
+            // Instanciar Game
+            Game game = new Game();
         }
     }
 }
