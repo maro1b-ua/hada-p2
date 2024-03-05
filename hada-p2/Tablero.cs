@@ -54,6 +54,7 @@ namespace Hada
             inicializaCasillasTablero();
         }
 
+        //Metodo que iniciara el tablero 
         private void inicializaCasillasTablero()
         {
             int x=0;
@@ -75,7 +76,7 @@ namespace Hada
             }
         }
 
-
+        //Metodo donde se da una coordenada a disparar en el tablero
         public void Disparar(Coordenada c)
         {
             if(c.Columna > Tablero|| c.Fila > Tablero)
@@ -96,7 +97,7 @@ namespace Hada
             }
         }
 
-
+        //Metodo que dibuja el tablero de juegos
         public string DibujarTablero()
         {
             string s = "";
@@ -114,6 +115,8 @@ namespace Hada
             return s.ToString();
         }
 
+
+        //Metodo ToString()
         public override string ToString()
         {
             string s="";
@@ -145,6 +148,7 @@ namespace Hada
             return s.ToString();
         }
 
+        //Metodo que activara tras suceder el evento de un barco disparado 
         private void cuandoEventoTocado(object sender, TocadoArgs evento)
         {
             Barco barco = (Barco)sender;
@@ -152,6 +156,7 @@ namespace Hada
             System.Console.WriteLine($"TABLERO: Barco[{barco.Nombre}] tocado en Coordenada: [{evento.c}]");
         }
 
+        //Metodo que se activara tras suceder el evento de un barco hundido
         private void cuandoEventoHundido(object sender, HundidoArgs evento)
         {
             Barco barco = (Barco)sender;
@@ -165,6 +170,7 @@ namespace Hada
 
         }
 
+        //Evento que finalizara la partida 
         public EventHandler<EventArgs> eventoFinPartida;
     }
 }
