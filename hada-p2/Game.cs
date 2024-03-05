@@ -17,16 +17,19 @@ namespace Hada
         }
 
         private void gameLoop() {
-            // Inicializar barcos
+            // Crear barcos
             Barco barco1 = new Barco("Barco1", 3, 'h', new Coordenada(1, 1));
             Barco barco2 = new Barco("Barco2", 2, 'v', new Coordenada(0, 2));
-            // Agregar más barcos si es necesario...
+            // Agregar más barcos aquí
 
             // Inicializar tablero
             Tablero tablero = new Tablero(6, new List<Barco> { barco1, barco2 });
 
             // Evento para finalizar el juego
-            tablero.eventoFinPartida += (sender, args) => finPartida = true;
+            tablero.eventoFinPartida += (sender, args) => {
+                finPartida = true;
+                Console.WriteLine("¡Todos los barcos han sido hundidos! Fin de la partida.");
+            };
 
             while (!finPartida) {
                 Console.WriteLine(tablero.ToString());
@@ -44,7 +47,13 @@ namespace Hada
                 if (coordenadas.Length == 2 && int.TryParse(coordenadas[0], out int fila) &&
                     int.TryParse(coordenadas[1], out int columna)) {
                     Coordenada disparoCoordenada = new Coordenada(fila, columna);
-                    tablero.Disparar(disparoCoordenada);
+                    try {
+                        tablero.Disparar(disparoCoordenada);
+                    }
+                    catch (ArgumentOutOfRangeException ex) {
+                        Console.WriteLine(ex.Message);
+                    }
+
                 }
                 else {
                     Console.WriteLine("Formato de coordenada incorrecto. Vuelve a intentarlo.");
