@@ -109,9 +109,13 @@ namespace Hada
                 s+= $"[{estado.Value}]";
                 if(contador == TamTablero - 1)
                 {
-                   s+="\n";
+                    s+="\n";
+                    contador=0;
                 }
-                contador++;
+                else
+                {
+                    contador++;
+                }
             }
 
             return s.ToString();
