@@ -46,10 +46,10 @@ namespace Hada
             this._Tablero=tamTablero;
             this.barcos.AddRange(barcos);
 
-            foreach(Barco b in barcos)
+            for(int i=0; i<barcos.Count(); i++)
             {
-                b.eventoTocado += TocadoArgs;
-                b.eventoHundido += HundidoArgs;
+                b[i].eventoTocado += cuandoEventoTocado;
+                b[i].eventoHundido += cuandoEventoHundido;
             }
             inicializaCasillasTablero();
         }
@@ -66,13 +66,105 @@ namespace Hada
                     this.casillasTablero.Add(c, "AGUA");
                 }
             }
-            foreach(var barco in barcos)
+            foreach(var barco in this.barcos)
             {
                 foreach(var elemento in barco.CoordenadasBarco)
                 {
-                    casillasTablero[elemento.Key]=elemento.Value;
+                    this.casillasTablero[elemento.Key]=elemento.Value;
                 }
             }
         }
+
+
+        public void Disparar(Coordenada c)
+        {
+            if(c.Columna > Tablero|| c.Fila > Tablero)
+            {
+                throw new ArgumentOutOfRangeException($"La coordenada ({c.Fila},{c.Columna}) esta fuera de las dimensiones del tablero");
+            }
+            else
+            {
+                this.coordenadasDisparadas.Add(c);
+                if (!coordenadasTocadas.Contains(c))
+                {
+                    coordenadasTocadas.Add(c);
+                    for(int i=0; i<Tablero; i++)
+                    {
+                        barcos[i].Disparo(c);
+                    }
+                }
+            }
+        }
+
+
+        public string DibujarTablero()
+        {
+            string s = "";
+            int contador= 0;
+            foreach(var estado in this.casillasTablero)
+            {
+                s+= $"[{estado.Value}]";
+                if(contador == Tablero - 1)
+                {
+                   s+="\n";
+                }
+                contador++;
+            }
+
+            return s.ToString();
+        }
+
+        public override string ToString()
+        {
+            string s="";
+
+            foreach(var barco in barcos)
+            {
+                s+=barco.ToString() + "\n";
+            }
+
+            s+="\n";
+
+            s+=" Coordenadas disparadas: ";
+            foreach(var coordenada in coordenadasDisparadas)
+            {
+                s+=coordenada.ToString();
+            }
+            s+="\n";
+            s+=" Coordenadas tocadas: ";
+            foreach(var coordenada in coordenadasDisparadas)
+            {
+                s+=coordenada.ToString();
+            }
+
+            s+="\n\n\n";
+            s+="CASILLAS TABLERO\n";
+            s+="------- \n";
+            s+=DibujarTablero();
+
+            return s.ToString();
+        }
+
+        private void cuandoEventoTocado(object sender, TocadoArgs evento)
+        {
+            Barco barco = (Barco)sender;
+            casillasTablero[evento.c]=evento.etiqueta;
+            System.Console.WriteLine($"TABLERO: Barco[{barco.Nombre}] tocado en Coordenada: [{evento.c}]");
+        }
+
+        private void cuandoEventoHundido(object sender, HundidoArgs evento)
+        {
+            Barco barco = (Barco)sender;
+            barcosEliminados.Add(barco);
+            System.Console.WriteLine($"TABLERO: Barco [{barco.Nombre}] hundido!!");
+
+            if(barcos.Count == barcosEliminados.Count)
+            {
+                eventoFinPartida(this, new EventArgs());
+            }
+
+        }
+
+        public EventHandler<EventArgs> eventoFinPartida;
     }
 }

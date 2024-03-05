@@ -10,12 +10,12 @@ namespace Hada
     {
         public class TocadoArgs : EventArgs
         {
-            public String nombre
+            public string nombre
             {
                 get; set;
             }
 
-            public String etiqueta
+            public string etiqueta
             {
                 get; set;
             }
@@ -24,7 +24,7 @@ namespace Hada
                 get; set;
             }
 
-            public TocadoArgs(String nombre, Coordenada c, String etiqueta)
+            public TocadoArgs(string nombre, Coordenada c, string etiqueta)
             {
                 this.nombre=nombre;
                 this.c=c;
@@ -34,11 +34,11 @@ namespace Hada
 
         public class HundidoArgs : EventArgs
         {
-            public String nombre
+            public string nombre
             {
                 get; set;
             }
-            public HundidoArgs(String nombre)
+            public HundidoArgs(string nombre)
             {
                 this.nombre=nombre;
             }

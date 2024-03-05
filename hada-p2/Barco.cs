@@ -12,9 +12,9 @@ namespace Hada
 
         //Diccionario donde se guardan las coordenadas que ocupa el barco siendo la clave la coordenada y el valor el nombre del barco
 
-        private readonly Dictionary<Coordenada, String> _CoordenadasBarco = new Dictionary<Coordenada, string>();
+        private readonly Dictionary<Coordenada, string> _CoordenadasBarco = new Dictionary<Coordenada, string>();
 
-        public Dictionary<Coordenada, String> CoordenadasBarco => _CoordenadasBarco;
+        public Dictionary<Coordenada, string> CoordenadasBarco => _CoordenadasBarco;
 
         //Nombre del barco
 
@@ -97,26 +97,25 @@ namespace Hada
 
         public override string ToString()
         {
-            String s= new string();
-            s= "["+ _Nombre + "] - DAÑOS: [" + _NumDanyos + "] - HUNDIDO: [";
+            string s= new string();
+            s= $"[{_Nombre}] - DAÑOS: [{_NumDanyos}] - HUNDIDO: [";
             if (this.hundido())
             {
                 s += "True]";
             }
             else
             {
-                s+="False]"
+                s+="False]";
             }
             s+= " - COORDENADAS: ";
 
-            foreach(KeyValuePair<Coordenada, String> k in _CoordenadasBarco)
+            foreach(KeyValuePair<Coordenada, string> k in _CoordenadasBarco)
             {
-                s+="["+ k.Key + " :"+ k.Value + "] ";
+                s+=$"[{k.Key} :{k.Value}] ";
             }
 
             return s.ToString();
         }
-
 
     }
 }
