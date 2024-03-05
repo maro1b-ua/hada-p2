@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Hada.Eventos;
+
 
 namespace Hada
 {
@@ -11,7 +13,7 @@ namespace Hada
         // Indica el tamaño que tendra el tablero
         private int _Tablero;
 
-        public int Tablero
+        public int TamTablero
         {
             get { return _Tablero;}
             set
@@ -43,13 +45,13 @@ namespace Hada
         //Constructor
         public Tablero(int tamTablero, List<Barco> barcos)
         {
-            this._Tablero=tamTablero;
+            this.TamTablero=tamTablero;
             this.barcos.AddRange(barcos);
 
             for(int i=0; i<barcos.Count(); i++)
             {
-                b[i].eventoTocado += cuandoEventoTocado;
-                b[i].eventoHundido += cuandoEventoHundido;
+                barcos[i].eventoTocado += cuandoEventoTocado;
+                barcos[i].eventoHundido += cuandoEventoHundido;
             }
             inicializaCasillasTablero();
         }
@@ -59,9 +61,9 @@ namespace Hada
         {
             int x=0;
             int y=0;
-            for(x=0; x < this._Tablero; x++)
+            for(x=0; x < this.TamTablero; x++)
             {
-                for(y=0; y < this._Tablero; y++)
+                for(y=0; y < this.TamTablero; y++)
                 {
                     Coordenada c = new Coordenada(x, y);
                     this.casillasTablero.Add(c, "AGUA");
@@ -79,7 +81,7 @@ namespace Hada
         //Metodo donde se da una coordenada a disparar en el tablero
         public void Disparar(Coordenada c)
         {
-            if(c.Columna > Tablero|| c.Fila > Tablero)
+            if(c.Columna > TamTablero|| c.Fila > TamTablero)
             {
                 throw new ArgumentOutOfRangeException($"La coordenada ({c.Fila},{c.Columna}) esta fuera de las dimensiones del tablero");
             }
@@ -89,7 +91,7 @@ namespace Hada
                 if (!coordenadasTocadas.Contains(c))
                 {
                     coordenadasTocadas.Add(c);
-                    for(int i=0; i<Tablero; i++)
+                    for(int i=0; i<TamTablero; i++)
                     {
                         barcos[i].Disparo(c);
                     }
@@ -105,7 +107,7 @@ namespace Hada
             foreach(var estado in this.casillasTablero)
             {
                 s+= $"[{estado.Value}]";
-                if(contador == Tablero - 1)
+                if(contador == TamTablero - 1)
                 {
                    s+="\n";
                 }

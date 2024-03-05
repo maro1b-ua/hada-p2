@@ -97,7 +97,7 @@ namespace Hada
 
         public override string ToString()
         {
-            string s= new string();
+            string s= "";
             s= $"[{_Nombre}] - DAÑOS: [{_NumDanyos}] - HUNDIDO: [";
             if (this.hundido())
             {
