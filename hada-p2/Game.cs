@@ -18,12 +18,13 @@ namespace Hada
 
         private void gameLoop() {
             // Crear barcos
-            Barco barco1 = new Barco("Barco1", 3, 'h', new Coordenada(1, 1));
-            Barco barco2 = new Barco("Barco2", 2, 'v', new Coordenada(0, 2));
+            Barco barco1 = new Barco("THOR", 1, 'h', new Coordenada(0, 0));
+            Barco barco2 = new Barco("LOKI", 2, 'h', new Coordenada(1, 2));
+            Barco barco3 = new Barco("MAYA", 3, 'v', new Coordenada(1, 2));
             // Agregar más barcos aquí
 
             // Inicializar tablero
-            Tablero tablero = new Tablero(6, new List<Barco> { barco1, barco2 });
+            Tablero tablero = new Tablero(4, new List<Barco> { barco1, barco2 ,barco3});
 
             // Evento para finalizar el juego
             tablero.eventoFinPartida += (sender, args) => {
