@@ -18,9 +18,9 @@ namespace Hada
 
         private void gameLoop() {
             // Crear barcos
-            Barco barco1 = new Barco("THOR", 1, 'h', new Coordenada(0, 0));
-            Barco barco2 = new Barco("LOKI", 2, 'h', new Coordenada(1, 2));
-            Barco barco3 = new Barco("MAYA", 3, 'v', new Coordenada(1, 2));
+            Barco barco1 = new Barco("THOR", 0, 'h', new Coordenada(0, 0));
+            Barco barco2 = new Barco("LOKI", 1, 'v', new Coordenada(1, 2));
+            Barco barco3 = new Barco("MAYA", 2, 'h', new Coordenada(3, 1));
             // Agregar más barcos aquí
 
             // Inicializar tablero
