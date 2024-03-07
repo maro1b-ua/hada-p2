@@ -23,6 +23,7 @@ namespace Hada
             Barco barco3 = new Barco("MAYA", 2, 'h', new Coordenada(3, 1));
             // Agregar más barcos aquí
 
+
             // Inicializar tablero (agregar a la lista tambien barcos nuevos)
             Tablero tablero = new Tablero(4, new List<Barco> { barco1, barco2 ,barco3});
 
