@@ -91,7 +91,7 @@ namespace Hada
                 if (!coordenadasTocadas.Contains(c))
                 {
                     coordenadasTocadas.Add(c);
-                    for(int i=0; i<TamTablero; i++)
+                    for(int i=0; i<barcos.Count; i++)
                     {
                         barcos[i].Disparo(c);
                     }
