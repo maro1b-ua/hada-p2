@@ -58,20 +58,17 @@ namespace Hada
             }
         }
         //Metodo de la clase en el que el barco realiza un disparo en una coordenada
-        public void Disparo(Coordenada c)
-        {
-            Dictionary<Coordenada, string>.KeyCollection coordenadaDisparo = this.CoordenadasBarco.Keys;
-            foreach (Coordenada coord in coordenadaDisparo)
-            {
-                if (c == coord && _CoordenadasBarco[coord]==this._Nombre)
-                {
+        public void Disparo(Coordenada c) {
+            var coordenadas = new List<Coordenada>(this.CoordenadasBarco.Keys);
+
+            foreach (var coord in coordenadas) {
+                if (coord.Fila == c.Fila && coord.Columna == c.Columna && this.CoordenadasBarco[coord] == this.Nombre) {
                     string situacion = _CoordenadasBarco[coord];
                     this._CoordenadasBarco[coord] = situacion + "_T";
                     int danyos = NumDanyos;
                     danyos++;
                     eventoTocado(this, new TocadoArgs(_Nombre, c, _CoordenadasBarco[coord]));
-                    if (hundido() == true)
-                    {
+                    if (hundido()) {
                         eventoHundido(this, new HundidoArgs(_Nombre));
                     }
                 }
