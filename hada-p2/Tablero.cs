@@ -88,7 +88,7 @@ namespace Hada
             else
             {
                 this.coordenadasDisparadas.Add(c);
-                if (!coordenadasTocadas.Contains(c))
+                if (!coordenadasTocadas.Contains(c) && casillasTablero[c] != "AGUA")
                 {
                     coordenadasTocadas.Add(c);
                     for(int i=0; i<barcos.Count; i++)
@@ -141,7 +141,7 @@ namespace Hada
             }
             s+="\n";
             s+=" Coordenadas tocadas: ";
-            foreach(var coordenada in coordenadasDisparadas)
+            foreach(var coordenada in coordenadasTocadas)
             {
                 s+=coordenada.ToString();
             }
