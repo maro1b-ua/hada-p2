@@ -23,7 +23,7 @@ namespace Hada
             Barco barco3 = new Barco("MAYA", 2, 'h', new Coordenada(3, 1));
             // Agregar más barcos aquí
 
-            // Inicializar tablero
+            // Inicializar tablero (agregar a la lista tambien barcos nuevos)
             Tablero tablero = new Tablero(4, new List<Barco> { barco1, barco2 ,barco3});
 
             // Evento para finalizar el juego
@@ -35,7 +35,7 @@ namespace Hada
             while (!finPartida) {
                 Console.WriteLine(tablero.ToString());
 
-                Console.WriteLine("Introduce una coordenada (fila,columna): ");
+                Console.WriteLine("Introduce la coordenada a la que disparar FILA,COLUMNA ('S' para Salir): ");
                 string input = Console.ReadLine();
 
                 if (input.ToLower() == "s") {
